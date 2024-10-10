@@ -1,0 +1,22 @@
+<html>
+<body>
+  <h1>Firebase Test</h1>
+  <input id="message" type="text" placeholder="Enter message">
+  <button onclick="sendMessage()">Send Message</button>
+  <script>
+    function sendMessage() {
+      var message = document.getElementById('message').value;
+      fetch('https://<YOUR-PROJECT-ID>.firebaseio.com/messages.json', {
+        method: 'POST',
+        body: JSON.stringify({
+          message: message
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(response => response.json())
+        .then(data => console.log(data));
+    }
+  </script>
+</body>
+</html>
